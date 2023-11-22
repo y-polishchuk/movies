@@ -1,0 +1,4 @@
+{
+  "emmet.includeLanguages": {"twig": "html", "vue-html": "html"},
+  "editor.fontLigatures": false
+}
