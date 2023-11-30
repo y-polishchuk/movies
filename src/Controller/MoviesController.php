@@ -11,26 +11,26 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MoviesController extends AbstractController
 {
-    private $em;
-    public function __construct(EntityManagerInterface $em)
+    private $movieRepository;
+
+    public function __construct(MovieRepository $movieRepository)
     {
-        $this->em = $em;
+        $this->movieRepository = $movieRepository;
     }
 
-    #[Route('/movies', name: 'app_movies')]
+    #[Route('/movies', methods: ['GET'], name: 'movies')]
     public function index(): Response
     {
-        // findAll() - SELECT * FROM movies;
-        // find() - SELECT * FROM movies WHERE id=5;
-        // findBy() - SELECT * FROM movies ORDER BY id DESC;
-        // findOneBy() - SELECT * FROM movies WHERE id = 6 AND title = 'The Dark Knight' ORDER BY id DESC;
-        // count() - SELECT COUNT() FROM movies WHERE id = 5;
+        return $this->render('movies/index.html.twig', [
+            'movies' => $this->movieRepository->findAll(),
+        ]);
+    }
 
-        $repository = $this->em->getRepository(Movie::class);
-        $movies = $repository->getClassName();
-
-        
-
-        return $this->render('index.html.twig');
+    #[Route('/movies/{id}', methods: ['GET'], name: 'movies')]
+    public function show($id): Response
+    {
+        return $this->render('movies/show.html.twig', [
+            'movie' => $this->movieRepository->find($id),
+        ]);
     }
 }
