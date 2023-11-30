@@ -41,7 +41,9 @@ class MovieFormType extends AbstractType
                 'attr' => array(
                     'class' => 'py-10'
                 ),
-                'label' => false
+                'label' => false,
+                'required' => false,
+                'mapped' => false
             ])
             // ->add('actors')
         ;
