@@ -21,28 +21,31 @@ class MovieFormType extends AbstractType
                     'class' => 'bg-transparent block border-b-2 w-full h-20 text-6xl outline-none',
                     'placeholder' => 'Enter Title...'
                 ),
-                'label' => false
+                'label' => false,
+                'required' => false
             ])
             ->add('releaseYear', IntegerType::class, [
                 'attr' => array(
                     'class' => 'bg-transparent block mt-10 border-b-2 w-full h-20 text-6xl outline-none',
                     'placeholder' => 'Enter Release Year...'
                 ),
-                'label' => false
+                'label' => false,
+                'required' => false
             ])
             ->add('description', TextareaType::class, [
                 'attr' => array(
                     'class' => 'bg-transparent block mt-10 border-b-2 w-full h-60 text-6xl outline-none',
                     'placeholder' => 'Enter Description...'
                 ),
-                'label' => false
+                'label' => false,
+                'required' => false
             ])
             ->add('imagePath', FileType::class, [
                 'attr' => array(
                     'class' => 'py-10'
                 ),
                 'label' => false,
-                'required' => false,
+                'required' => true,
                 'mapped' => false
             ])
             // ->add('actors')
